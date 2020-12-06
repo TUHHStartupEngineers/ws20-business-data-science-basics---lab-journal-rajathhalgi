@@ -216,6 +216,7 @@ library(scales)
   )
 
 ```
+
 # Task 2
 
 ## Get API data
