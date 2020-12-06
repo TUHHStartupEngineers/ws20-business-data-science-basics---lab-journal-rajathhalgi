@@ -20,7 +20,8 @@ knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 
 This is an `.Rmd` file. It is plain text with special features. Any time you write just like this, it will be compiled to normal text in the website. If you put a \# in front of your text, it will create a top level-header.
 
-
+# Task 1
+## sales by location
 ```{r include=FALSE}
 library(tidyverse)
 library(readxl)
@@ -172,6 +173,8 @@ library(scales)
     y = "Revenue"
   )
 ```
+
+## Sales by location and Year
 ```{r include=FALSE}
 # 6.2 Sales by Year and location ----
 # Step 1 - Manipulate
@@ -213,6 +216,10 @@ library(scales)
   )
 
 ```
+# Task 2
+
+## Get API data
+
 ```{r include=FALSE}
 ForecastData <- read.csv("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?aggregateHours=1&combinationMethod=aggregate&contentType=csv&unitGroup=metric&locationMode=single&key=FMHYECR8SJR9XCBSBZF7BK2WQ&dataElements=default&locations=Berlin")
 
@@ -220,6 +227,8 @@ ForecastData <- read.csv("https://weather.visualcrossing.com/VisualCrossingWebSe
 ```{r echo=FALSE}
 as_tibble(ForecastData, .rows = 10)
 ```
+
+## Scrapping
 ```{r include=FALSE}
 # STEP 1: Load Libraries ---
 
@@ -296,6 +305,10 @@ rosebike_cat_mdl_price_joined
 ```{r echo=FALSE}
 as_tibble(rosebike_cat_mdl_price_joined, .rows = 9)
 ```
+
+# Task 3
+
+## Patent data
 ```{r include=FALSE}
 # Tidyverse
 library(tidyverse)
@@ -517,6 +530,10 @@ as_tibble(patent_tbl_3_typ, .rows = 10)
 
 ```
 
+# Task 4
+
+## Covid data
+
 ```{r include=FALSE}
 library(tidyverse)
 library(vroom)
@@ -564,6 +581,7 @@ ggplot(aes(x = date, y = total_cases, color = countriesAndTerritories)) +
 
 ```
 
+## Covid data vs Mortality rate
 
 ```{r include=FALSE}
 
