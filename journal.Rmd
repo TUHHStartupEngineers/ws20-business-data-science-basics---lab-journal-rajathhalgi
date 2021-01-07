@@ -550,13 +550,13 @@ covid_data_tbl <- read_csv("https://opendata.ecdc.europa.eu/covid19/casedistribu
 
 ```{r include=FALSE}
 covid_by_month_tbl <- covid_data_tbl %>%
-  select(cases, countriesAndTerritories, dateRep) %>%
+  select(cases_weekly, countriesAndTerritories, dateRep) %>%
   filter(countriesAndTerritories %in% c("Germany","United_Kingdom","France","Spain","United_States_of_America")) %>%
   mutate(date       = lubridate::dmy(dateRep)) %>%
 #mutate(date_floor  = floor_date(date, unit ="month")) %>%
 #mutate(month = month(date)) %>%
 group_by(countriesAndTerritories, date) %>%
-    summarise(total_cases = cumsum(cases)) %>%
+    summarise(total_cases = cumsum(cases_weekly)) %>%
     ungroup() 
 
 ```
@@ -599,9 +599,9 @@ ggplot(aes(x = date, y = total_cases, color = countriesAndTerritories)) +
     TRUE ~ countriesAndTerritories
 
   ))%>%
-  group_by(countriesAndTerritories, popData2019, deaths) %>%
+  group_by(countriesAndTerritories, popData2019, deaths_weekly) %>%
     summarise(total_pop = max(popData2019))%>%
-    summarise(total_death = sum(deaths))%>%
+    summarise(total_death = sum(deaths_weekly))%>%
   summarise(mortality =  (total_death)/(popData2019))
 
 ```
@@ -653,7 +653,7 @@ ggplot() +
   geom_map(aes(x = long, y = lat, map_id = region, fill = mortality),map = world) +
  scale_fill_continuous(labels = scales::percent)+
   labs(title = "Confirmed Covid19 deaths relative to size of the population ",
-       subtitle = "More than 1.2 Million confirmed covid19 deaths worldwide")
+       subtitle = "More than 1.2 Million confirmed covid19 deaths worldwide") 
 
 ```
 
