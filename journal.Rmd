@@ -545,6 +545,7 @@ library(data.table)
 # Counter
 library(tictoc)
 covid_data_tbl <- read_csv("https://opendata.ecdc.europa.eu/covid19/casedistribution/csv")
+#view(covid_data_tbl)
 
 ```
 
